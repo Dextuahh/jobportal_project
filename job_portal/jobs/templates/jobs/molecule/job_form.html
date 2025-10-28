@@ -1,0 +1,12 @@
+{# expects form variable #}
+<form method="post">
+  {% csrf_token %}
+  {% for field in form %}
+    {% include "jobs/atom/form_field.html" with field=field label=field.label %}
+  {% endfor %}
+  <div style="margin-top: .8rem;">
+    {% include "jobs/atom/button.html" with href="#" label="Save" extra_class="btn-primary" %}
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a class="btn" href="{% url 'jobs:job_list' %}">Cancel</a>
+  </div>
+</form>

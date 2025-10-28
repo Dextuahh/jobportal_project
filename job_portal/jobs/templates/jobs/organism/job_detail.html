@@ -1,0 +1,15 @@
+{% extends "jobs/base.html" %}
+{% block title %}{{ job.title }} — Job Portal{% endblock %}
+{% block content %}
+  <article>
+    <h2>{{ job.title }}</h2>
+    <div><strong>{{ job.company }}</strong> — {{ job.location }}</div>
+    <p>{{ job.description|linebreaks }}</p>
+    <div><small>Posted: {{ job.posted_at }}</small></div>
+    <div class="actions">
+      {% include "jobs/atom/button.html" with href=job.get_absolute_url|add:'edit/' label="Edit" %}
+      {% include "jobs/atom/button.html" with href=job.get_absolute_url|add:'delete/' label="Delete" %}
+      <a class="btn" href="{% url 'jobs:job_list' %}">Back</a>
+    </div>
+  </article>
+{% endblock %}

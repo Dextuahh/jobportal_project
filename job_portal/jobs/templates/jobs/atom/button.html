@@ -1,0 +1,2 @@
+{# usage: {% include "jobs/atom/button.html" with href=... label="..." extra_class="btn-primary" %} #}
+<a href="{{ href }}" class="btn {% if extra_class %}{{ extra_class }}{% endif %}">{{ label }}</a>

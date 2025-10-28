@@ -1,0 +1,11 @@
+{# usage: include with job=job #}
+<div class="job-card">
+  <h2><a href="{{ job.get_absolute_url }}">{{ job.title }}</a></h2>
+  <div><strong>{{ job.company }}</strong> — {{ job.location }}</div>
+  <p>{{ job.description|truncatechars:200 }}</p>
+  <div class="actions">
+    {% include "jobs/atom/button.html" with href=job.get_absolute_url label="View" %}
+    {% include "jobs/atom/button.html" with href=job.get_absolute_url|add:'edit/' label="Edit" %}
+    {% include "jobs/atom/button.html" with href=job.get_absolute_url|add:'delete/' label="Delete" extra_class="" %}
+  </div>
+</div>
