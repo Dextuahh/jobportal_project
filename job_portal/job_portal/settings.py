@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'jobs',
+    'security_management',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +50,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# Login settings
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'jobs:job_list'
+LOGOUT_REDIRECT_URL = 'login'
 
 ROOT_URLCONF = 'job_portal.urls'
 

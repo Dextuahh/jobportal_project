@@ -22,16 +22,30 @@
   <header>
     <h1><a href="{% url 'jobs:job_list' %}">Job Portal</a></h1>
     <nav>
-      <a class="btn" href="{% url 'jobs:job_create' %}">Post a Job</a>
+        {% if user.is_authenticated %}
+          <a class="btn" href="{% url 'jobs:job_create' %}">Post a Job</a>
+          <a class="btn" href="{% url 'logout' %}">Logout</a>
+        {% else %}
+          <a class="btn" href="{% url 'login' %}">Login</a>
+          <a class="btn" href="{% url 'register' %}">Register</a>
+        {% endif %}
     </nav>
   </header>
 
   <main class="container">
+    {# messages area: show Django messages (success, error, info) #}
+    {% if messages %}
+      <div>
+        {% for message in messages %}
+          <div class="message {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
     {% block content %}{% endblock %}
   </main>
 
   <footer>
-    <small>Built with ❤️ — Atomic Design demo</small>
+    <small>CAN YOU FIND YOUR JOBS</small>
   </footer>
 </body>
 </html>

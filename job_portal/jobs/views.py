@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import Job
 from .forms import JobForm
@@ -15,7 +16,7 @@ class JobDetailView(DetailView):
     template_name = 'jobs/organism/job_detail.html'
     context_object_name = 'job'
 
-class JobCreateView(CreateView):
+class JobCreateView(LoginRequiredMixin, CreateView):
     model = Job
     form_class = JobForm
     template_name = 'jobs/organism/job_form.html'
